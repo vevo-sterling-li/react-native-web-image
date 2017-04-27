@@ -11,9 +11,10 @@
 @implementation RCTConvert (WebImageSource)
 
 + (WebImageSource*)WebImageSource:(id)json {
-
+    
     json = [self NSDictionary:json];
-    return [[WebImageSource alloc] initWithURIString:json[@"uri"]];
+    //    return [[WebImageSource alloc] initWithURIString:json[@"uri"]];
+    return [[WebImageSource alloc] initWithURIString:json[@"uri"] placeholderImage:json[@"placeholder"]];
 }
 
 @end
@@ -50,5 +51,7 @@ RCT_CUSTOM_VIEW_PROPERTY(resizeMode, NSString, UIImageView) {
 }
 
 RCT_EXPORT_VIEW_PROPERTY(onWebImageError, RCTDirectEventBlock);
+
+RCT_EXPORT_VIEW_PROPERTY(onLoad, RCTDirectEventBlock);
 
 @end
